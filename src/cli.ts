@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import kleur from "kleur";
 import yargs from "yargs";
 import { Config } from "./config";

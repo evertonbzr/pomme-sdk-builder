@@ -1,16 +1,19 @@
 {
   "name": "pomme-sdk-builder",
-  "version": "1.0.0",
+  "bin": {
+    "pomme": "./dist/cli.js"
+  },
+  "version": "1.0.2",
   "license": "MIT",
   "main": "dist/cli.js",
   "types": "dist/cli.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "tsx src/cli"
-  },
-  "bin": {
-    "pomme": "./dist/src/cli.js"
   },
   "dependencies": {
     "axios": "^1.5.1",
