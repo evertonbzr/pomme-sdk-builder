@@ -64,7 +64,7 @@ export const generateImplTask = (config: Config): ListrTask => {
           params: ${queryMatch},
           url: path,
         });
-        return response.data;
+        return response;
       } catch (error) {
         throw error;
       }
