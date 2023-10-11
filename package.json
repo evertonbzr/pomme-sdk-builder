@@ -3,7 +3,7 @@
   "bin": {
     "pomme": "./dist/cli.js"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "main": "dist/cli.js",
   "types": "dist/cli.d.ts",
