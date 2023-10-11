@@ -19,6 +19,11 @@ export const schemaTask = (config: Config): ListrTask => {
     title: `fetching schema ${targetUrl}`,
     task: async (ctx) => {
       ctx.targetConfig = configTarget;
+      if (config.fileRoutes && config.key) {
+        const schema = config.fileRoutes[config.key];
+        ctx.schema = processSchema(schema);
+        return;
+      }
       ctx.schema = processSchema(
         await fetchSchema({
           endpoint: targetUrl,

@@ -16,9 +16,15 @@ const program: any = yargs
     default: "pomme.config.json",
     type: "string",
   })
-  .option("target", {
-    alias: "t",
-    description: "Target config",
+  .option("file", {
+    alias: "f",
+    description: "file routes output",
+    required: false,
+    type: "string",
+  })
+  .option("key", {
+    alias: "k",
+    description: "checksum to load",
     required: false,
     type: "string",
   })
@@ -32,6 +38,8 @@ const program: any = yargs
 
 const config: Config = {
   configFile: program.config && readFile(join(process.cwd(), program.config)),
+  fileRoutes: program.file && readFile(join(process.cwd(), program.file)),
+  key: program.key || undefined,
 };
 
 if (!validateConfigs([config])) [process.exit(1)];

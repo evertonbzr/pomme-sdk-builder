@@ -1,3 +1,5 @@
 export interface Config {
-  configFile: any;
+  configFile?: any;
+  fileRoutes?: any;
+  key?: string;
 }
