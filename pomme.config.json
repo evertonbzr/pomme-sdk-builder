@@ -1,13 +1,13 @@
 {
-  "develop": {
+  "default": {
     "input": {
-      "targetUrl": "http://localhost:3000/pomme",
+      "targetUrl": "http://localhost:3061/pomme",
       "axios": {
-        "baseUrl": "http://localhost:3000"
+        "baseUrl": "http://localhost:3061"
       }
     },
     "output": {
-      "path": "./sdk/api"
+      "path": "./generated"
     }
   }
 }

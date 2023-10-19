@@ -18,12 +18,6 @@ export const generateImplTask = (config: Config): ListrTask => {
       `import { AxiosInstance, AxiosRequestConfig } from "axios";` + "\n\n";
 
     renderData +=
-      `type Opts = Omit<
-  AxiosRequestConfig<null>,
-  "method" | "data" | "params" | "url"
->;` + "\n\n";
-
-    renderData +=
       `export const getFunctions = (axiosInstance: AxiosInstance) => {` + "\n";
 
     const mappedController = getControllerKeyValue(schema);
@@ -38,7 +32,7 @@ export const generateImplTask = (config: Config): ListrTask => {
         let func =
           `    async ${item.key}(${
             hasArgs ? `args: t.${hasArgs.name}, ` : ""
-          }opts?: Opts) {` + "\n";
+          }opts?: AxiosRequestConfig) {` + "\n";
 
         func += `      let path = "${item.route}"` + "\n";
 
