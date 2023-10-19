@@ -31,8 +31,6 @@ export function getFormatedSchema(schema: any) {
       ...(Object.keys(paramsSchema.properties).length ? ["params"] : []),
     ];
 
-    console.log(required);
-
     const newAcc = {
       ...acc,
       [key]: {
