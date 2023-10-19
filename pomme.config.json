@@ -1,9 +1,9 @@
 {
   "develop": {
     "input": {
-      "targetUrl": "http://localhost:3061/pomme",
+      "targetUrl": "http://localhost:3000/pomme",
       "axios": {
-        "baseUrl": "http://localhost:3061"
+        "baseUrl": "http://localhost:3000"
       }
     },
     "output": {

@@ -38,7 +38,7 @@ const program: any = yargs
 
 const config: Config = {
   configFile: program.config && readFile(join(process.cwd(), program.config)),
-  fileRoutes: program.file && readFile(join(process.cwd(), program.file)),
+  fileRoutes: program.file && readFile(join(program.file)),
   key: program.key || undefined,
 };
 

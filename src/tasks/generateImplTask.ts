@@ -14,7 +14,14 @@ export const generateImplTask = (config: Config): ListrTask => {
     const { path } = targetConfig.output;
 
     let renderData = `import * as t from './types';` + "\n\n";
-    renderData += `import { AxiosInstance } from "axios";` + "\n\n";
+    renderData +=
+      `import { AxiosInstance, AxiosRequestConfig } from "axios";` + "\n\n";
+
+    renderData +=
+      `type Opts = Omit<
+  AxiosRequestConfig<null>,
+  "method" | "data" | "params" | "url"
+>;` + "\n\n";
 
     renderData +=
       `export const getFunctions = (axiosInstance: AxiosInstance) => {` + "\n";
@@ -30,8 +37,8 @@ export const generateImplTask = (config: Config): ListrTask => {
 
         let func =
           `    async ${item.key}(${
-            hasArgs ? `args: t.${hasArgs.name}` : ""
-          }) {` + "\n";
+            hasArgs ? `args: t.${hasArgs.name}, ` : ""
+          }opts?: Opts) {` + "\n";
 
         func += `      let path = "${item.route}"` + "\n";
 
@@ -63,6 +70,7 @@ export const generateImplTask = (config: Config): ListrTask => {
           data: ${bodyMatch},
           params: ${queryMatch},
           url: path,
+          ...opts
         });
         return response;
       } catch (error) {

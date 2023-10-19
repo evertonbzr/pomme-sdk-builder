@@ -26,10 +26,12 @@ export function getFormatedSchema(schema: any) {
     const method = req as any;
 
     const required = [
-      ...(body ? ["body"] : []),
-      ...(query ? ["query"] : []),
+      ...(body ? (checkIfIsRequired(JSON.parse(body)) ? ["body"] : []) : []),
+      ...(query ? (checkIfIsRequired(JSON.parse(query)) ? ["query"] : []) : []),
       ...(Object.keys(paramsSchema.properties).length ? ["params"] : []),
     ];
+
+    console.log(required);
 
     const newAcc = {
       ...acc,
@@ -56,4 +58,15 @@ export function getFormatedSchema(schema: any) {
   }, {});
 
   return mappedSchema;
+}
+
+function checkIfIsRequired(obj: any): boolean {
+  const keys = Object.keys(obj);
+
+  let hasRequired = false;
+
+  if (keys.includes("required"))
+    if (obj["required"].length > 0) hasRequired = true;
+
+  return hasRequired;
 }
